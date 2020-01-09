@@ -14,61 +14,59 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xappia.gui.LogInController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-      <HBox spacing="12.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox spacing="12.0">
-               <children>
-                  <TextField promptText="username" />
-                  <PasswordField fx:id="passText" promptText="password" />
-                  <Label fx:id="labelPass" textFill="RED" />
-               </children>
-               <HBox.margin>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </HBox.margin>
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-            </VBox>
-            <AnchorPane>
-               <HBox.margin>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </HBox.margin>
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-               <children>
-                  <Button layoutX="-12.0" layoutY="28.0" mnemonicParsing="false" text="Log In" onAction="#logIn"/>
-               </children>
-            </AnchorPane>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-         </padding>
-      </HBox>
-   </center>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="menuRemove" mnemonicParsing="false" onAction="#goRemove" text="Remove user..." />
+                        <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#exit" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="menuAbout" mnemonicParsing="false" onAction="#goXappia" text="About Xappia..." />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <HBox spacing="12.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox spacing="12.0">
+                    <children>
+                        <TextField fx:id="userText" promptText="username" />
+                        <PasswordField fx:id="passText" promptText="password" />
+                        <Label fx:id="labelPass" textFill="RED" />
+                    </children>
+                    <HBox.margin>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                    </padding>
+                </VBox>
+                <AnchorPane>
+                    <HBox.margin>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                    </HBox.margin>
+                    <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                    </padding>
+                    <children>
+                        <Button fx:id="logInButton" layoutX="-11.0" layoutY="14.0" mnemonicParsing="false" onAction="#logIn" prefWidth="60.0" text="Log In" />
+                        <Button fx:id="registerButton" layoutX="-11.0" layoutY="45.0" mnemonicParsing="false" onAction="#goRegister" text="Sign Up" />
+                    </children>
+                </AnchorPane>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+            </padding>
+        </HBox>
+    </center>
 </BorderPane>
+

@@ -59,11 +59,11 @@ public class CarritoR{
     }
 
     public List<Carrito> getAll(){
-        return session.createQuery("from "+Carrito.class.getName()).list();
+        return session.createQuery("from "+Carrito.class.getSimpleName()).list();
     }
 
     public List<Carrito> getByFiltro(String filtro){
-        return session.createQuery("from "+Carrito.class.getName()+" where "+filtro).list();
+        return session.createQuery("from "+Carrito.class.getSimpleName()+" where "+filtro).list();
     }
 
     private List<Item> getItems(int idCarrito){

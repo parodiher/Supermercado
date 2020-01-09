@@ -14,6 +14,16 @@ public abstract class GenericR<E> {
         this.clazz=clazz;
     }
 
+    public GenericR(){}
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
+    }
+
     public void save(E e){
         if(e==null)return;
         Transaction tx=session.beginTransaction();
@@ -55,10 +65,10 @@ public abstract class GenericR<E> {
     }
 
     public List<E> getAll(){
-        return session.createQuery("from "+clazz.getName()).list();
+        return session.createQuery("from "+clazz.getSimpleName()).list();
     }
 
     public List<E> getByFiltro(String filtro){
-        return session.createQuery("from "+clazz.getName()+" where "+filtro).list();
+        return session.createQuery("from "+clazz.getSimpleName()+" where "+filtro).list();
     }
 }

@@ -4,7 +4,9 @@ package com.xappia.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="Usuario")
@@ -39,7 +41,7 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name="Usuario")
+    @Column (name="idUsuario")
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -85,12 +87,23 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    public ArrayList<Carrito> getCarritos() {
-        return (ArrayList<Carrito>) carritos;
+    @OneToMany
+    public List<Carrito> getCarritos() {
+        return (List<Carrito>) carritos;
     }
 
-    public void setCarritos(ArrayList<Carrito> carritos) {
+    public void setCarritos(List<Carrito> carritos) {
         this.carritos = carritos;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password+
+                '}';
     }
 }

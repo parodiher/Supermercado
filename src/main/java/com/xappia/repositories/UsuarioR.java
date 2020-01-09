@@ -2,7 +2,9 @@ package com.xappia.repositories;
 
 import com.xappia.entities.Carrito;
 import com.xappia.entities.Usuario;
+import com.xappia.hibernate.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,10 @@ public class UsuarioR<E> extends GenericR<E> {
 
     public UsuarioR(Session session){
         super(session, Usuario.class);
+    }
+
+    public UsuarioR(){
+        super();
     }
 
     public List<Usuario> getByNombre(String nombre){
@@ -69,9 +75,14 @@ public class UsuarioR<E> extends GenericR<E> {
         return getCarritos(usuario.getIdUsuario());
     }
 
-    public boolean checkUserPass(String user, String pass){
-        String filtro="usuario='"+ user + "' and password='"+pass+"'";
-        boolean result=(getByFiltro(filtro)!=null) ? true : false;
+    public String checkUserPass(String user, String pass){
+        String filtro="email='"+ user + "' and password='"+pass+"'";
+        String result="true";
+        List<Usuario> lista= (List<Usuario>) getByFiltro(filtro);
+        System.out.println(lista);
+        if (lista.isEmpty()){
+            result="false";
+        }
         return result;
     }
 

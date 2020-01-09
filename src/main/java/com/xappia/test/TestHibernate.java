@@ -5,6 +5,7 @@ import com.xappia.entities.Item;
 import com.xappia.entities.Producto;
 import com.xappia.entities.Usuario;
 import com.xappia.hibernate.util.HibernateUtil;
+import com.xappia.repositories.UsuarioR;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -29,17 +30,22 @@ public class TestHibernate {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session=sf.openSession();
 
-        Transaction tx = session.beginTransaction();
+//        Transaction tx = session.beginTransaction();
+        System.out.println(Usuario.class.getSimpleName());
 
-        try {
-            session.save(prod);
-            session.save(carr);
-            session.save(item);
-            tx.commit();
-        } catch (Exception e) {
-            System.out.println(e);
-            tx.rollback();
-        }
+        UsuarioR ur = new UsuarioR(session);
+
+        System.out.println(ur.checkUserPass("parodiher@gmail.com","123456"));
+
+//        try {
+//            session.save(prod);
+//            session.save(carr);
+//            session.save(item);
+//            tx.commit();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            tx.rollback();
+//        }
 
 
         session.close();
